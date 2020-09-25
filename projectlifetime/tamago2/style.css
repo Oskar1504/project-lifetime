@@ -1,0 +1,178 @@
+body{
+	background-color: gray;
+	font-size: 18px;
+	color: black;
+
+}
+
+section{
+	float:left;
+	width:75%;
+	height: 70%;
+}
+
+aside{
+	float:right;
+	width:25%;
+	height: 70%;
+}
+
+footer{
+	clear:both;
+	width:100%;
+	height: 30%;
+}
+table,td{
+	margin:5px;
+	border:3px solid black;
+	border-collapse:separate;
+	border-spacing:4px;
+	text-align:center;
+	word-wrap: break-word;
+}
+label{
+	font-size: 23px;
+
+}
+.main_content{
+	border:0px solid black;
+}
+.menu_button{
+	width:90px;
+	height:20px;
+}
+.menu_info{
+	width: 260px;
+}
+.content_button{
+
+	border:0px solid black;
+}
+
+.field{
+	width:160px;
+	height:160px;
+	
+	border-width:0px;
+}
+
+.welt_background{
+	margin:0px;
+	border:2px solid black;
+	border-spacing:1px;
+	text-align:center;
+}
+
+.welt{
+	width:256px;
+	height:512px;
+	border-width:4px;
+}
+
+.selected{
+	border-color: red;
+}
+
+.mysql_daten{
+	float: right;
+}
+
+.field_info{
+	float:left;
+	margin:5px;
+	width:600px;
+	height:150px;
+	border: 2px solid black;
+	background-color:white;
+	overflow-y: scroll;
+}
+
+.map{
+	margin:5px;
+	border:0px solid black;
+	border-collapse:separate;
+	text-align:center;
+	background-position: center; 
+	background-size: cover;
+}
+
+.egg{
+	background-position: 50% 95%; /* center would cneter and percantege speicife where */
+	background-repeat: no-repeat; /* Do not repeat the image */
+	
+}
+.egg_health{
+	font-size: 150%;
+	color: black;
+}
+
+.float_left{
+	float:left;
+}
+.float_right{
+	float:right;
+}
+
+.haus_field{
+
+	width:100px;
+	height:25px;
+	
+	border-width:3px;
+}
+.feld_field{
+	width:90px;
+	height:90px;
+	background-color:green;
+	background-size: cover;
+	
+	border-width:3px;
+}
+
+
+.monster_bild{
+	width:160px;
+	height:160px;
+	
+
+	margin:5px;
+	border:0px solid black;
+	border-collapse:separate;
+	text-align:center;
+	background-position: center; 
+	background-size: cover;
+
+}
+
+.harvestable{
+	outline: 3px solid Chartreuse;
+	outline-offset:-6px;
+}
+
+.markt_anzeigen{
+	box-sizing: border-box; 
+	outline: 5px solid Black;
+	width: auto;
+	margin: 5px;
+	height:700px;
+	overflow-y: scroll;
+}
+.markt_info{
+	box-sizing: border-box; 
+	outline: 3px solid Black;
+	margin: 5px;
+	width: auto;
+	height:auto;
+
+}
+
+.unsichtbar{
+	display:none;
+}
+
+
+.center{
+  margin-left: auto;
+  margin-right: auto;
+
+}

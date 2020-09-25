@@ -1,0 +1,30 @@
+
+table,td{
+	background-color: DarkCyan;
+	margin:5px;
+	border:3px solid black;
+	border-collapse:separate;
+	border-spacing:4px;
+	text-align:center;
+	word-wrap: break-word;
+}
+
+.stapel{
+	width: 80px;
+	height: 120px;
+	outline: solid 5px black;
+}
+
+.spielfeld{
+	background-color: gray;
+	width: 80px;
+	height: 120px;
+
+}
+
+.handkarte{
+	background-color: yellow;
+	width: 80px;
+	height: 120px;
+
+}

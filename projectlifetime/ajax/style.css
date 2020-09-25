@@ -1,0 +1,39 @@
+body{
+	background-color: DarkCyan;font-size: 20px;
+}
+input{
+width:15em;
+}
+section{
+	float:left;
+	width:80%;
+	height: 100%;
+}
+
+aside{
+	float:right;
+	width:20%;
+	height: 100%;
+}
+
+.user_info{
+	
+	margin: 0px;
+}
+.chat{
+	
+}
+
+.post{
+	font-size: 20px;
+	margin: 0px;
+}
+.user{
+	 text-decoration: underline;
+}
+.msg{
+	margin: 0px;
+}
+.mentioned{
+	color:red;
+}

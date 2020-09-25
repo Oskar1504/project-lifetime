@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel = "stylesheet" href = "style.css" type = "text/css">
+		
+		<script src ="js/speicher.js"></script>
+		<script src ="js/script.js"></script>
+		<script>start();</script>
+	</head>
+	
+	<body>
+		<section>
+			<div class = "spielfeld">
+				<p class = "field_info">
+					<input type = "text" id = "text_detail_checkbox"   value = "Details" size = "2">
+					<input type = "checkbox" id = "detail_checkbox" checked  onchange = "change_opasity('field_info');">
+					<br><br>		
+					<textarea readonly id = "field_info" class = "field_info"rows = "10" cols = "18">Field Info
+					</textarea>
+				</p>
+				<table>
+					<tr>
+						<td onclick = "field_select(this);"class = "field selected" id = "field_0"></td>
+						<td onclick = "field_select(this);"class = "field locked" id = "field_1"> </td>
+						<td onclick = "field_select(this);"class = "field locked" id = "field_2"> </td>
+					</tr>
+					<tr>
+						<td onclick = "field_select(this);"class = "field locked" id = "field_3"></td>
+						<td onclick = "field_select(this);"class = "field locked" id = "field_4"></td>
+						<td onclick = "field_select(this);"class = "field locked" id = "field_5"></td>
+					</tr>
+					<tr>
+						<td onclick = "field_select(this);"class = "field locked" id = "field_6"></td>
+						<td onclick = "field_select(this);"class = "field locked" id = "field_7"></td>
+						<td onclick = "field_select(this);"class = "field locked" id = "field_8"></td>
+					</tr>
+				</table>
+			</div>
+		</section>
+		<aside>
+			<table >
+				<tr>
+					<td ><input readonly type = "text" id = "clock_value" value = "Clock:" size = "10"></td>
+					<td ><input readonly type = "text" id = "gold" size = "10" ></td>
+					<td ><input readonly type = "text" id = "autosave_last" value = "Autosave:" size = "10"></td>
+					<td ></td>
+				
+				</tr>
+				<tr>
+					<td>
+						<center><button onclick = "kaufen();" id = "b_kaufen"> Feld Kaufen</button></center>
+						
+					</td>
+					<td>
+						<center><button onclick = "ernten();" id = "b_verkaufen">Ernten</button></center>
+					</td>
+					<td>
+						<center><button onclick = "change_opasity('shop_table');change_opasity('shop_table_info');" id = "b_shop">Shop</button></center>
+					</td>
+					<td>
+						<center><button onclick = "change_opasity('settings');" id = "">Settings</button></center>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<textarea readonly id = "shop_table_info" rows= "10" cols= "20" autofocus class = "shop_info shop_table ">
+				Select an Plant to plant it on the selected field
+			</textarea>
+			<table id = "shop_table" class = "">
+				<tr>
+					<td id = "shop_menu_button_0"  onclick = "shop_plants();"  >
+						<input class = "button blue" disabled value = "Plants" size = "8">
+					</td>
+					<td id = "shop_menu_button_1" onclick = "shop_upgrades();">
+						<input  class = "button blue" disabled value = "Upgrades" size = "8">
+					</td>
+				</tr>
+				<tr></tr>
+				<tr>
+					<td id = "shop_button_0"  class = "shop_button salat" onclick = "shop_select_item(this);">
+						<input readonly value = "Salat" size = "8">
+					</td>
+					<td id = "shop_button_1" class = "shop_button mohre" onclick = "shop_select_item(this);">
+						<input readonly value = "Moehre" size = "8">
+					</td>
+				</tr>
+				<tr>
+					<td id = "shop_button_2" class = "shop_button erbse"  onclick = "shop_select_item(this);">
+						<input readonly value = "Erbse"  size = "8">
+					</td>
+					<td id = "shop_button_3" class = "shop_button aubergine" onclick = "shop_select_item(this);">
+						<input readonly value = "Aubergine"size = "8">
+					</td>
+				</tr>
+				<tr>
+					<td id = "shop_button_4" class = "shop_button kurbis"  onclick = "shop_select_item(this);">
+						<input readonly value = "Kuerbis" size = "8">
+					</td>
+					<td id = "shop_button_5" class = "shop_button tomate" onclick = "shop_select_item(this);">
+						<input readonly value = "Tomate" size = "8">
+					</td>
+				</tr>
+				<tr></tr>
+				<tr>
+					<td id = "shop_menu_button_3"  onclick = "plant(selected_shop_item);"  >
+						<input disabled class = "button green" value = "Plant" size = "8">
+					</td>
+					<td >
+						<input disabled value = "" size = "8">
+					</td>
+				</tr>
+			</table>
+			<br>
+			<table id = "settings" class = "hide">
+				<tr>
+					<td ><input readonly type = "text" value = "Autosave" size = "7"></td>
+					<td ><input readonly type = "text" id = "Autosave delay" size = "11" value = "Autosave delay" ></td>
+					<td onclick = "save_game(); save_game_alert();"  ><input readonly class = "button dunkelblau" type = "text" value = "Save game" size = "14"></td>
+					<td onclick = "load_game();"><input readonly class = "button dunkelblau"  type = "text" value = "Load game" size = "7"></td>
+				</tr>
+				<tr>
+					<td><input type = "checkbox" id = "autosave_checkbox" checked ></td>
+					<td><input type = "text" id = "autosave_delay" value = "50" onchange = "autosave_delay_f(this);" size = "11"></td>
+					<td onclick = "remove_game();"><input readonly class = "button dunkelblau"  type = "text" value = "Delete Save game" size = "14"></td>
+					
+				</tr>
+			</table>
+		</aside>
+	</body>
+	<script>show_details();</script>
+	<script>load_game_frage();</script>
+</html>

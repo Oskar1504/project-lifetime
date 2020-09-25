@@ -1,0 +1,31 @@
+body{
+	background-color: DarkSlateGrey;
+	color:black;
+}
+table,td{
+	background-color: DarkCyan;
+	margin:5px;
+	border:3px solid black;
+	border-collapse:separate;
+	border-spacing:4px;
+	text-align:center;
+	word-wrap: break-word;
+}
+
+.info{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+td{
+	width:25px;
+	height:25px;
+}
+.selected{
+	border-color: FloralWhite;
+
+}
+.play{
+	border-color: Cyan;
+
+}

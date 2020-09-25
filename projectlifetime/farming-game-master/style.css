@@ -1,0 +1,102 @@
+
+
+body{
+	background: green;
+	font-size: 15px;
+	color: black;
+}
+
+section{
+	
+	float: left;
+}
+aside{
+	
+	float: right;
+}
+
+table, th,td{
+	border: 1px solid black;
+	border-collapse:separate;
+	border-spacing:5px;
+	text-align:center;
+}
+
+.field{
+	width: 190px;
+	height: 190px;
+	border-width:5px;
+	border-color:BurlyWood;
+	background-position:center;
+	background-image: url("bilder/field.png");
+	
+}
+
+.gekauft{
+}
+.harvestable{
+	outline: 5px solid Chartreuse;
+	outline-offset:-10px;
+}
+.selected{
+	border-color: red;
+	border-width:5px;
+}
+
+.locked{
+	background-position:center;
+	background-image: url("bilder/lock.png"),url("bilder/field.png");
+}
+
+
+.Salat{
+	background-position:center;
+	background-image: url("bilder/salat.png"),url("bilder/field.png");
+}
+.Moehre{
+	background-position:center;
+	background-image: url("bilder/mohre.png"),url("bilder/field.png");
+}
+.Erbse{
+	background-position:center;
+	background-image: url("bilder/erbse.png"),url("bilder/field.png");
+}
+.Aubergine{
+	background-position:center;
+	background-image: url("bilder/aubergine.png"),url("bilder/field.png");
+}
+.Kuerbis{
+	background-position:center;
+	background-image: url("bilder/kurbis.png"),url("bilder/field.png");
+}
+.Tomate{
+	background-position:center;
+	background-image: url("bilder/tomate.png"),url("bilder/field.png");
+}
+
+.shop_info{
+	float: right;
+}
+.field_info{
+	float: right;
+}
+
+
+.hide{
+	opacity: 0;
+}
+
+.button {
+	
+	font-size: 15px;
+	font-weight: bold;
+	text-align:center;
+	background-color:Gainsboro;
+}
+
+.green{
+	background-color:Chartreuse;
+}
+.blue{
+	background-color:DarkSeaGreen;
+}

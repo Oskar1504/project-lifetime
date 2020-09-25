@@ -1,0 +1,62 @@
+canvas{
+
+	outline-style: solid;
+	outline-color: black;
+	outline-width: 3px;
+	
+}
+
+.main_content{
+	float: left;
+	width: 70%;
+	height: 100%;
+}
+
+.sidebar{
+	float: right;
+	align-content: center;
+	width: 30%;
+	height: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  border-radius: 5px;  
+  background: red;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%; 
+  background: rgb(0,0,0);
+  cursor: pointer;
+}
+
+.grun{
+
+  background: green;
+}
+
+.blau{
+
+  background: blue;
+}
+
+.farbe{
+
+	outline-style: solid;
+	outline-color: black;
+	outline-width: 3px;
+	width: 50px;
+	height: 50px;
+	background-color: black;
+	align-content: center;
+	clear: all;
+}

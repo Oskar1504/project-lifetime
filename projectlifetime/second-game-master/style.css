@@ -1,0 +1,136 @@
+
+
+body{
+	background-color: gray;
+	font-size: 15px;
+	color: black;
+}
+
+section{
+	
+	float: left;
+}
+aside{
+  align-items: center;
+	float: right;
+}
+
+table, th,td{
+	border:3px solid black;
+	border-collapse:separate;
+	border-spacing:5px;
+	text-align:center;
+}
+.field{
+	width:90px;
+	height:90px;
+	background-color:SteelBlue;
+	border-width:5px;
+}
+.selected_field{
+	border-width:5px;
+	border-color:red;
+}
+
+.details{
+	float:right;
+	width:320px;
+	height:749px;
+	margin-left:5px;
+	background-color:white;
+	background-color:white;
+	border: 2px solid black;
+}
+.field_info{
+	margin:2px;
+	float:left;
+	width:150px;
+	height:auto;
+	border: 2px solid black;
+}
+
+.lager_info{
+	margin:2px;
+	float: right;
+	width:150px;
+	height:auto;
+	border: 2px solid black;
+}
+
+.general_info{
+	margin:2px;
+	float:bottom;
+	float:left;
+	width:150px;
+	height:auto;
+	border: 2px solid black;
+}
+
+.shop{
+	float:left;
+	width:540px;
+	height:auto;
+	background-color:white;
+	border: 2px solid black;
+	margin-top:5px;
+	
+}
+.market{
+	float:left;
+	width:250px;
+	height:auto;
+	background-color:white;
+	border: 2px solid black;
+	margin-top:5px;
+	
+}
+.kasten{
+	
+	float:left;
+	width:auto;
+	padding:2px;
+	height:auto;
+	background-color:white;
+	border: 2px solid black;
+	margin:2px;
+	margin-bottom:5px;
+}
+
+.scrollbar{
+	
+	overflow-y: scroll;
+}
+
+.button_shop{
+	border: 1px solid black;
+	background-color:Silver;
+	font-weight:bold;
+	font-size: 18px;
+}
+.button_shop_2{
+	border: 1px solid black;
+	background-color:Silver;
+	font-weight:bold;
+	font-size: 18px;
+}
+.selected_button{
+	border-width:1px;
+	border-color:red;
+	background-color:LightSlateGrey;
+}
+
+.info{
+	margin:2px;
+}
+
+.right{
+	float:right;
+}
+
+.bold{
+	font-weight:bold;
+}
+.hide{
+		opacity: 0;
+}
+

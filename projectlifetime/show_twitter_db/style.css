@@ -1,0 +1,14 @@
+div{
+	outline: 3px solid Black;
+	font-size: 30px;
+	background-color: gray;
+	color: black;
+}
+
+.info{
+	background-color: AliceBlue;
+}
+
+.tweet{
+	font-size: 22px;
+}

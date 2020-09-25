@@ -1,0 +1,104 @@
+<!DOCTYPE html> 
+<html> 
+	
+<head> 
+	<title> Canvas test</title> 
+</head> 
+
+<body> 
+
+	<p>Check the console for the output.</p> 
+
+	<canvas width="450" height="420" id = "canvas2"> 
+	</canvas> 
+
+	<script type="text/javascript" > 
+
+
+		function getMousePosition(canvas, event) { 
+			let rect = canvas.getBoundingClientRect(); 
+			let x = event.clientX - rect.left; 
+			let y = event.clientY - rect.top; 
+			console.log(" x : " + x, 
+						" y : " + y,
+						"\nrgb : " + ctx.getImageData(x,y,1,1).data); 
+			//click detection leider nur viereck
+			for(i = 0;i < spielfeld_elemente.length;i++){
+				
+				for(j = 0; j < spielfeld_elemente[i].length;j++){
+					let data =  spielfeld_elemente[i][j];
+
+					if(x > data[10] && x < data[2] && y > data[9] && y < data[3]){
+						console.log("\nZeile: "+i,
+									"Element: "+j);
+					}
+				}
+			}
+
+		} 
+	
+		
+		document.getElementById("canvas2").addEventListener("mousedown", function(e) 
+		{ 
+			getMousePosition(	document.getElementById("canvas2"), e); 
+
+		}); 
+
+	
+		var spielfeld_elemente = [], zeilen_elemte = [];
+
+		var canvas=document.getElementById("canvas2");
+		var ctx = canvas.getContext('2d');
+
+		var my_gradient=ctx.createLinearGradient(0, 0, canvas.width,canvas.height);
+		my_gradient.addColorStop(0.1, "black");
+		my_gradient.addColorStop(0.5, "red");
+		my_gradient.addColorStop(1, "white");
+		ctx.fillStyle = my_gradient;
+
+
+		var size = 6;
+
+		function create_poly(dx,dy){
+			//defininert startpubkjt
+			x=dx;y=dy;
+			//sechseck vverähtlnis ist 7 zu 8 also x7 und y8 wobei die punkte der seiten höhen 4 sind 2/8
+			return [  x,y+(8*size), x+(7*size),y+((8/2)*size), x+(7*size),y-((8/2)*size), x,y-(8*size), x-(7*size),y-((8/2)*size),x-(7*size),y+((8/2)*size)];
+		}
+		function create_farm_spielfeld(){
+			//erstellt alle sechsecke specihert in array
+			for(j = 0; j < 5 ; j++){
+				zeilen_elemte = [];
+				let zeilen_anzahl = 3,x_versatz = 0,abstand = 6;
+				//ändert anzahl der elemte in zieel und deren versatz
+				if(j == 1 || j == 3){
+					zeilen_anzahl += 1;
+					x_versatz = -1*7*size-abstand/2;
+				}
+				if(j == 2){
+					zeilen_anzahl += 2;
+					x_versatz = (-1*(7*2*size)-(abstand));
+				}
+				for(i = 0; i < zeilen_anzahl ; i++){
+					zeilen_elemte.push(create_poly(((i+1.5)*(7*2*size+abstand))+x_versatz,(j+0.8)*((8*2*size)-3.3*size)));
+				}
+				spielfeld_elemente.push(zeilen_elemte);
+			}
+			//zeichnet sechsecke aus speicher array
+			for(i=0;i<spielfeld_elemente.length;i++){
+				for(j=0;j<spielfeld_elemente[i].length;j++){
+					ctx.beginPath();
+					ctx.moveTo(spielfeld_elemente[i][j][0], spielfeld_elemente[i][j][1]);
+					for( punkt=2 ; punkt < spielfeld_elemente[i][j].length-1 ; punkt+=2 ){
+						ctx.lineTo( spielfeld_elemente[i][j][punkt] ,  spielfeld_elemente[i][j][punkt+1] );
+					}
+					ctx.closePath();
+					ctx.fillStyle = my_gradient;
+					ctx.fill();
+				}
+			}
+		}
+	</script> 
+</body> 
+
+</html> 

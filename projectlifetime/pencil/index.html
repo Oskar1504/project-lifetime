@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" type="image/png" href="favicon.png">
+	<link rel = "stylesheet" href = "style.css" type = "text/css">
+	<title>Pencil</title>
+</head>
+<body>
+	<center>
+		<div id = "main_content" class = "main_content">
+			<canvas id = "canvas2" width="1028" height="712"></canvas>
+		</div>
+		<div id = "farbauswahl" class = "sidebar">
+			<input type="range" id =  "rot" min="0" max="255" value="0" oninput ="render(this);" class="slider">
+			<span>Rot:</span><span id = "s_rot">0</span>
+			<br>
+			<input type="range" id =  "grun" min="0" max="255" value="0" oninput="render(this);" class="slider grun">
+			<span>Gruen:</span><span id = "s_grun">0</span>
+			<br>
+			<input type="range" id =  "blau" min="0" max="255" value="0" oninput="render(this);" class="slider blau">
+			<span>Blau:</span><span id = "s_blau">0</span>
+			<br><br>
+			<div id ="farbe" class="farbe"></div><br>
+			<input type="range" id =  "size" min="1" max="128" value="12" oninput="set_var(this,'size');">
+			<span>Size:</span><span id = "s_size">12</span>
+			<br><br>
+			<button onclick="clear2()">Alles loeschen</button><br><br>
+			<span>Random Farbe</span>
+			<input type="checkbox" id = "random_farbe"><br><br>
+			<span>Random Size</span>
+			<input type="checkbox" id = "random_size"><br>
+			<input type="range" id =  "random_size_var" min="1" max="255" value="50" oninput="set_var(this,'r_max_size');">
+			<span>Max Size:</span><span id = "s_random_size_var">50</span>
+			<br><br>
+			<span>Random Position</span>
+			<input type="checkbox" id = "random_pos"><br>
+			<input type="range" id =  "random_pos_var" min="1" max="255" value="50" oninput="set_var(this,'r_pos_var');">
+			<span>Abstand:</span><span id = "s_random_pos_var">50</span>
+			<br><br>
+			<span>Kreisanzahl beschraenken</span>
+			<input type="checkbox" id = "einzeln"><br>
+			<input type="range" id =  "max_kreise" min="1" max="500" value="50" step = "1" oninput="set_var(this,'max_kreise');">
+			<span>Max Kreise:</span><span id = "s_max_kreise">50</span><br>
+			<span id = "s_kreise">0</span>
+		</div>
+	</center>
+</body>
+<script>
+	var size = 5;
+
+	var r_pos_var = 50;
+	var r_max_size = 50;
+	var kreise = 0,max_kreise=50;
+	//fügt click funktion hinz
+	document.getElementById("canvas2").addEventListener("mousemove", function(e) 
+	{ 
+		let canvas = document.getElementById("canvas2");
+		getMousePosition(canvas, e); 
+
+	}); 
+	document.getElementById("canvas2").addEventListener("touchmove", function(e) 
+	{ 
+		let canvas = document.getElementById("canvas2");
+		getMousePosition(canvas, e); 
+
+	}); 
+	document.getElementById("canvas2").addEventListener("mousedown", function(e) 
+	{ 
+		let canvas = document.getElementById("canvas2");
+		getMousePosition(canvas, e); 
+
+	}); 
+
+
+	function clear2(){
+		let canvas = document.getElementById("canvas2");
+		let ctx = canvas.getContext('2d');
+		ctx.fillStyle = "white";
+		ctx.fillRect(1,1,canvas.width,canvas.height);
+
+	}
+
+	function set_var(elemt,variable){
+		document.getElementById("s_"+elemt.id).innerText = elemt.value;
+		if(variable == 'size'){
+			size = elemt.value;
+		}else if(variable == 'r_pos_var'){
+			r_pos_var = elemt.value;
+		}else if(variable == 'r_max_size'){
+			r_max_size = elemt.value;
+		}else if(variable == 'max_kreise'){
+			max_kreise = elemt.value;
+		}
+	}
+
+	function render(elemt){
+		document.getElementById("s_"+elemt.id).innerText = elemt.value;
+		let rot = document.getElementById("s_rot").innerText;
+		let grun = document.getElementById("s_grun").innerText;
+		let blau = document.getElementById("s_blau").innerText;
+		document.getElementById("farbe").style.backgroundColor = 'rgb('+rot+','+grun+','+blau+')';
+	}
+
+	function getMousePosition(canvas_el, event, array) { 
+		
+	var canvas = canvas_el;
+	var ctx = canvas.getContext('2d');
+	let rect = canvas.getBoundingClientRect(); 
+	var x = event.clientX - rect.left; 
+	var y = event.clientY - rect.top; 
+
+
+	
+	if(event.buttons == 1){
+		if(document.getElementById("random_farbe").checked == true){
+
+		let rot = Math.floor(Math.random() * 255);   
+		let grun = Math.floor(Math.random() * 255);   
+		let blau = Math.floor(Math.random() * 255); 
+		document.getElementById("farbe").style.backgroundColor = 'rgb('+rot+','+grun+','+blau+')';
+	}
+
+	if(document.getElementById("random_size").checked == true){
+
+		size = getRandomInt(1,r_max_size);
+	}
+
+	if(document.getElementById("random_pos").checked == true){
+		x = x + getRandomInt((r_pos_var*-1),r_pos_var);
+		y = y + getRandomInt((r_pos_var*-1),r_pos_var);
+	}
+
+	if(document.getElementById("einzeln").checked == true && kreise >= max_kreise){
+		ctx.fillStyle = "white";
+		ctx.fillRect(1,1,canvas.width,canvas.height);
+		kreise =0;
+	}
+	kreise++;
+	document.getElementById("s_kreise").innerText = "Gezeichnete Kreise: "+kreise;
+
+	//zeuichenbt es endgültig
+		ctx.fillStyle = document.getElementById("farbe").style.backgroundColor;
+		ctx.beginPath();
+		ctx.arc(x,y, size, 0, 2 * Math.PI);
+		ctx.fill();
+		
+	}
+
+
+
+} 
+
+function getRandomInt(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+var img = "";
+function ehre(){
+	let canvas = document.getElementById("canvas2");
+	img    = canvas.toDataURL("image/png");
+	console.log(img);
+	convertURIToImageData(img).then(function(imageData) {
+  // Here you can use imageData
+  console.log(imageData);});
+}
+
+var bild = "";
+function test(){
+	let canvas = document.getElementById("canvas2");
+	let ctx = canvas.getContext('2d');
+	bild = [];
+	
+	bild = ctx.getImageData(1,1,canvas.width,canvas.height);
+	localStorage.setItem("bild",JSON.stringify(bild));
+}
+
+function test2(bild){
+	let canvas = document.getElementById("canvas2");
+	let ctx = canvas.getContext('2d');
+	ctx.putImageData(bild,1,1);
+}
+
+
+</script>
+</html>

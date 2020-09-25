@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel = "stylesheet" href = "style.css" type = "text/css">
+		<link rel = "icon" href = "icon.png" type = "image/x-icon">
+		<script src ="js/script.js"></script>
+		<script src ="js/language.js"></script>
+	</head>
+	
+	<body  class = "tooltip"  id = "inhalte-werden-zentriert">
+		<div>
+			<header>
+			<h1 id = "text_h1">
+			Loot Calculator
+			</h1>
+			<h2>
+				by Oskar1504
+				
+				<br><br>
+				<a href = "#de" onclick = "deutsch();" >Deutsch</a>
+				<a href = "#eng" onclick = "english();">English</a>
+				<br>
+			</h2>
+			</header>
+			<section>
+				<div>
+					<table>
+						<tr>
+							<td align = "center"><img src = "bilder/rep-Orderofsouls.png" width = "64" height = "64" ></td>
+							<td align = "center"><img src = "bilder/rep-Goldhoarder.png" width = "64" height = "64" ></td>
+							<td align = "center"><img src = "bilder/rep-Goldhoarder.png" width = "64" height = "64" ></td>
+							<td align = "center"><img src = "bilder/rep-Merchant.png" width = "64" height = "64" ></td>
+							<td align = "center"><img src = "bilder/rep-Athena.png" width = "64" height = "64" ></td>
+						</tr>
+						<tr>
+							<td>
+								<select id = "schadel" onchange = "selectitem(this)">
+									<option id = "text_liste_seelenorden" value = "0,0,0,0,0">Seelenorden</option>
+									<option id = "s1" class = "oos" value = "90,180,507,1,1">Verdorbener Schädel</option>
+									<option id = "s2" class = "oos" value = "180,350,1014,1,1">Ehrloser Schädel</option>
+									<option id = "s3" class = "oos" value = "350,750,2025,1,1">Hasserfüllter Schädel</option>
+									<option id = "s4" class = "oos" value = "750,1450,4050,1,1">Garstiger Schädel</option>
+									<option value = "0,0,0,0,0">---------</option>
+									<option id = "sks" class = "oos" value = "850,220,6075,1,1">Skelettkäptainschädel</option>
+									<option id = "fs" class = "oos" value = "1800,4200,12150,1,1">Festungschädel</option>
+								</select>
+							</td>
+							<td>
+								<select id = "kisten"  onchange = "selectitem(this)">
+									<option id = "text_liste_goldsammler" value = "0,0,0,0,0">Goldsammler</option>
+									<option id = "k1" class = "gh" value = "60,130,375,1,1">Schiffbrüchige Kiste</option>
+									<option id = "k2" class = "gh" value = "140,260,750,1,1">Seefahrer Kiste</option>
+									<option id = "k3" class = "gh" value = "280,520,1500,1,1">Plünderer Kiste</option>
+									<option id = "k4" class = "gh" value = "580,1100,3000,1,1">Käptains Kiste</option>
+									<option value = "0,0,0,0,0">---------</option>
+									<option id = "skk" class = "gh" value = "850,1500,4500,1,1">Skelettkäptains Kiste</option>
+									<option id = "fk" class = "gh" value = "1500,3000,9000,1,1">Festungskiste Kiste</option>
+									<option value = "0,0,0,0,0">---------</option>
+									<option id = "gk" class = "gh" value = "2200,2600,9000,1,1">Grogkiste</option>
+									<option id = "hk" class = "gh" value = "3000,3500,12150,1,1">Heuelkiste</option>
+									<option id = "wk" class = "gh" value = "3000,3500,12150,1,1">Wutkiste</option>
+								</select>
+							</td>
+							<td>
+								<select  onchange = "selectitem(this)" >
+									<option id = "text_liste_atefakt" value = "0,0,0,0,0">Artefakt</option>
+									<option id = "a1" class = "gh" value = "90,130,375,1,1">Bronze Artefakt</option>
+									<option id = "a2" class = "gh" value = "140,260,750,1,1">Silber Artefakt</option>
+									<option id = "a3" class = "gh" value = "280,520,1500,1,1">Gold Artefakt</option>
+									<option id = "a4" class = "gh" value = "580,1100,3000,1,1">Jeweled Artefakt</option>
+									<option value = "0,0,0,0,0">---------</option>
+									<option id = "ad1" class = "gh" value = "140,260,750,1,1">Roaring Goblet</option>
+									<option id = "ad2" class = "gh" value = "280,520,1500,1,1">Brimstone Casket</option>
+									<option id = "ad3" class = "gh" value = "580,1100,3000,1,1">Devil's Remnant</option>
+									<option id = "ad4" class = "gh" value = "1100,2100,6000,1,1">Magma's Grail</option>
+								</select>
+							</td>
+							<td>
+								<select onchange = "selectitem(this)" >
+									<option id = "text_liste_handelsbund" value = "0,0,0,0,0">Handelsbund</option>
+									<option id = "t1" class = "tc" value = "100,200,675,1,1">Feiner Zucker</option>
+									<option id = "t2" class = "tc" value = "260,470,1350,1,1">Seltener Tee</option>
+									<option id = "t3" class = "tc" value = "500,100,2700,1,1">Exotische Seide</option>
+									<option id = "t4" class = "tc" value = "1100,1900,5400,1,1">Seltene Kräuter</option>
+									<option id = "t5" class = "tc" value = "2100,5400,16200,1,1">Uralter Knochenstaub</option>
+									<option value = "0,0,0,0,0">---------</option>
+									<option id = "td1" class = "tc" value = "260,470,1350,1,1">Vulkangestein</option>
+									<option id = "td2" class = "tc" value = "500,1000,2700,1,1">Wertvolle Erze</option>
+									<option id = "td3" class = "tc" value = "1100,1900,5400,1,1">Superseltene Mineralien</option>
+									<option id = "td4" class = "tc" value = "2100,3600,10800,1,1">Superseltene Edelsteine</option>
+									<option value = "0,0,0,0,0">---------</option>
+									<option id = "tt1" class = "tc" value = "700,700,0,1,1">Pflanzen</option>
+									<option id = "tt2" class = "tc" value = "700,700,0,1,1">Feiner Stoff</option>
+									<option id = "tt3" class = "tc" value = "700,700,0,1,1">Rumflaschen</option>
+									<option value = "0,0,0,0,0">---------</option>
+									<option id = "tr1" class = "tc" value = "600,1100,3750,1,1">Obstkiste</option>
+									<option id = "tr2" class = "tc" value = "600,1100,3750,1,1">Holzkiste</option>
+									<option id = "tr3" class = "tc" value = "600,1100,3750,1,1">Kannonenkugelkiste</option>
+									<option id = "tr4" class = "tc" value = "1100,2000,3750,1,1">Feuerkugelkiste</option>
+									<option id = "tr5" class = "tc" value = "280,520,0,1,1">Munitionskiste</option>
+								</select>
+							</td>
+							<td>
+								<select onchange = "selectitem(this)">
+									<option id = "text_liste_athena" value = "0,0,0,0,0">Athenassegen</option>
+									<option id = "at1" class = "at" value = "4300,7000,13500,1,1">Athenakiste</option>
+									<option id = "at2" class = "at" value = "8000,10000,27000,1,1">Aschgraue Athenakiste</option>
+									<option value = "0,0,0,0,0">---------</option>
+									<option id = "at3" class = "at" value = "570,620,1350,1,1">Legendärer Kelch</option>
+									<option id = "at4" class = "at" value = "1400,1550,2700,1,1">Legendäres Relikt</option>
+									<option value = "0,0,0,0,0">---------</option>
+									<option id = "at5" class = "at" value = "570,620,1350,1,1">Legendärer verdorbener Schädel</option>
+									<option id = "at6" class = "at" value = "1400,1550,2700,1,1">Legendärer garstiger Schädel</option>
+									<option value = "0,0,0,0,0">---------</option>
+									<option id = "at7" class = "at" value = "570,620,1350,1,1">Legendäre Kiste</option>
+									<option id = "at8" class = "at" value = "3000,5000,5400,1,1">Legendäres Sprengfass</option>
+								</select>
+							</td>
+						</tr>
+					</table>
+					<br>
+					<!--<br>
+					<div id "fehler">
+						<input id = "alert_text" type = "text" value = "fehlermeldung" style = "display:none" size = "100" disabled>
+					</div>
+					<br>-->
+					<table>
+						<tr>
+							<th id = "text_item" >Item</th>
+							<th id = "text_anzahl" >Anzahl</th>
+							<th id = "text_aschgrau" >Aschgrau</th>
+						</tr>
+						<tr>
+							<td>
+								<select id = "selecteditem">
+									<option id = "item" size = "1" value = "0,0,0,0,0" name = "item">Item</option>
+								</select>
+							
+							</td>
+							<td><input type = "text" id = "amount" value = "1" size="4" onchange = "refreshdetailvalues();"></td>
+							<td>
+								<center>
+									<img src = "bilder/ashen.png" width = "20" height = "20" >
+									<input disabled type = "checkbox" id = "ashen" onclick = "changeashen(this);" value = "ashen">
+								</center>
+							</td>
+							<td><button id = "b_additem" onclick = "additempre();">Item hinzufügen</button></td>
+							<td><button id = "b_deleteitem" onclick = "deleteitem();">Item löschen </button></td>
+							<td><button id = "b_change" onclick = "change();">Anzahl ändern</button></td>
+						</tr>
+					</table>
+					
+					<div>
+						<table>
+							<tr>
+								
+								<td>
+									<select id = "output" size = "20" onChange = "selectoutputitem(this);")>
+										<option id = "text_gesamter_loot" value = "0,0,0,0,0">Gesamter Loot</option>
+									</select>
+								</td>
+								<td>
+									<table id = "table_details">
+										<tr>
+											<th bgcolor="Dimgray" style="line-height:10px;" colspan=1>&nbsp;</th>
+											<th><input readonly type = "text" value = "min Gold" size = "5"></th>
+											<th><input readonly type = "text" value = "max Gold" size = "5"></th>
+											<th><input readonly type = "text" value = "EmiPoints" size = "5"></th>
+											<th><input readonly type = "text" value = "Amount" size = "5"></th>
+											<th><input readonly type = "text" value = "Ashen" size = "5"></th>
+										</tr>
+										<tr>
+											<th>
+												<input class = "tooltip_content"readonly type = "text" value = "normal" size = "5">
+												<input readonly class = "tooltip_content_hidden" type = "text" value = "Zeigt die Werte eines Items" size = "23">
+											</th>
+											<th><input readonly type = "text" id = "item_min" value = "0" size = "5"></th>
+											<th><input readonly type = "text" id = "item_max" value = "0" size = "5"></th>
+											<th><input readonly type = "text" id = "item_emipoints" value = "0" size = "5"></th>
+											<th><input readonly type = "text" id = "item_amount" value = "0" size = "5"></th>
+											<th><input readonly type = "text" id = "item_ashen" value = "1" size = "5"></th>
+											
+										</tr>
+										<tr>
+											<th>
+												<input class = "tooltip_content" readonly type = "text" value = "changed" size = "5">
+												<input readonly class = "tooltip_content_hidden" type = "text" value = "Zeigt die Werte des Items unter berücksichtigung der Anzahl/Aschgrau" size = "62">
+											</th>
+											<th><input readonly type = "text" id = "item_min_new" value = "0" size = "5"></th>
+											<th><input readonly type = "text" id = "item_max_new" value = "0" size = "5"></th>
+											<th><input readonly type = "text" id = "item_emipoints_new" value = "0" size = "5"></th>
+											<th><input readonly type = "text" id = "item_amount_new" value = "1" size = "5"></th>
+											<th><input readonly type = "text" id = "item_ashen_new" value = "1" size = "5"></th>
+										</tr>
+										<tr>
+											<td bgcolor="Dimgray" style="line-height:220px;" colspan=3>&nbsp;</td>
+										</tr>
+										<tr >
+											<td >
+												<input readonly id = "text_flagge" class = "tooltip_content" type = "text" value = "Botschafterflagge" size = "12">
+												<input readonly class = "tooltip_content_hidden" type = "text" value = "Auswählen unter welcher Botschafterflagge man fährt" size = "45">
+											</td>
+											<td>
+												<input readonly id = "text_flaggenlevel" class = "tooltip_content" type = "text" value = "Flaggenlevel" size = "7">
+												<input readonly class = "tooltip_content_hidden" type = "text" value = "Level der Botschafterflagge angeben" size = "30">
+											</td>
+											<td>
+												<input readonly id = "text_multiplikator" class = "tooltip_content" type = "text" value = "Multiplikator" size = "7">
+												<input readonly class = "tooltip_content_hidden" type = "text" value = "Ein Multiplikator den man einstellen kann, fals ein Event aktiv ist" size = "55">
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<select id = "flaggentyp" onchange ="refresh();">
+													<option id = "keine_flagge">Keine Flagge</option>
+													<option id = "oos_flagge">Seelenorden</option>
+													<option id = "gh_flagge">Goldsammler</option>
+													<option id = "tc_flagge">Handelsbund</option>
+													<option id = "at_flagge">Athenassegen</option>
+												</select>
+												
+											</td>
+											<td>
+												<select id = "flaggenlevel" onchange ="refresh();" >
+													<option value = "1">1</option>
+													<option value = "2">2</option>
+													<option value = "3">3</option>
+													<option value = "4">4</option>
+													<option value = "5">5</option>
+												</select>
+											</td>
+											<td><input type = "text" id = "multiplikator" value = "1" size = "7" onchange = "sum();"></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<h3 id = "text_gesamtwert_loot" >Gesamtwert des Lootes</h3>
+				<table >
+					<tr>
+						<th><input readonly type = "lol" value = "min Gold" size = "5"></th>
+						<th><input readonly type = "lol" value = "max Gold" size = "5"></th>
+						<th><input readonly type = "lol" value = "Ø Gold" size = "5"></th>
+						<th><input readonly type = "lol" value = "Emissarypoints" size = "10"></th>
+					</tr>
+					<tr>
+						<th><input readonly type = "lol" id = "gesamt_min" value = "0" size = "5"></th>
+						<th><input readonly type = "lol" id = "gesamt_max" value = "0" size = "5"></th>
+						<th><input readonly type = "lol" id = "gesamt_gold" value = "0" size = "5"></th>
+						<th><input readonly type = "lol" id = "gesamt_emipoints" value = "0" size = "10"></th>
+						<td><button id = "b_refresh" style="height:35px;width:120px" onclick = "refresh();">Refresh</button></td>
+					</tr>
+				</table>
+			</section>
+			
+			<footer>
+				<table>
+					<tr>
+						<td>
+								<p>Version 0.4</p>
+						</td>
+						<td>
+							<p id = "text_disclaimer_2">Die Grafiken sind von Sander Roli.</P>
+						</td>
+						<td>
+							<a href= "https://discord.gg/SrFPyQD" title= "Sander Roli's Discord" target="_blank">Sander Roli's Discord Server </a>
+						</td>
+						<td>
+							<p id = "text_disclaimer_1">Alle Werte sind von der</p>
+						</td>
+						<td>
+							<a href= "https://seaofthieves.gamepedia.com" title= "Sea of Thieves Wiki" target="_blank"> Sea of Thieves Wiki.</a>
+						</td>
+					</tr>
+				</table>
+			</footer>
+		</div>
+		<script>english();</script>
+	</body>
+	
+</html>
