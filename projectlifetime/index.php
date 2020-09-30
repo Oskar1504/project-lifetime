@@ -23,6 +23,8 @@
 
 			<tr><td><p>Hier findet ihr eine raytracing demo. <br><a href="raytracing/index.php">Raytracing Demo</a></p></td></tr>
 
+			<tr><td><p>Hier findet ihr einen Rechner welcher beliebig viele Werte berechnen kann. <br><a href="rechner/index.html">Rechner</a></p></td></tr>
+
 			<tr><td><p>Hier finden sie mein Hauptprojekt, ein Spiel welches alle meine Ideen beinhaltet(insofern ich sie schon eingebaut habe).<br><a href="tamago2/login/login.php">Spiel</a></p></td></tr>
 
 

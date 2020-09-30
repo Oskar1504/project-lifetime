@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rechner</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<center>
+		<div><span>Rechnung</span></div>
+		<div><span id = "rechnung"></span><span id ="ergebnis"></span></div>
+		<table>
+			<tr>
+				<td onclick="add_number(this)">9</td>
+				<td onclick="add_number(this)">8</td>
+				<td onclick="add_number(this)">7</td>
+				<td onclick="add_rechner(this)">/</td>
+			</tr>
+			<tr>
+				<td onclick="add_number(this)">6</td>
+				<td onclick="add_number(this)">5</td>
+				<td onclick="add_number(this)">4</td>
+				<td onclick="add_rechner(this)">*</td>
+			</tr>
+			<tr>
+				<td onclick="add_number(this)">3</td>
+				<td onclick="add_number(this)">2</td>
+				<td onclick="add_number(this)">1</td>
+				<td onclick="add_rechner(this)">+</td>
+			</tr>
+			<tr>
+				<td onclick="ac(this)">AC</td>
+				<td onclick="add_number(this)">0</td>
+				<td onclick="berechnen(this)">=</td>
+				<td onclick="add_rechner(this)">-</td>
+			</tr>
+		</table>
+
+		<div><span id = "debug">0</span></div>
+		<div><span>Punkt vor Strichrechnung funktioniert noch nicht.</span></div>
+	</center>
+</body>
+<script>
+	var zahl = "",zahlen = [], zeichen = [];
+
+	function display(value){
+		let rechnung = document.getElementById("rechnung").innerText;
+		rechnung += value;
+		document.getElementById("rechnung").innerText = rechnung;
+	}
+
+	function display_debug(){
+		document.getElementById("debug").innerHTML = "Zahlen: "+ zahlen +"<br>Zeichen: "+zeichen;
+	}
+	function add_number(elemt){
+		display(elemt.innerText);
+		zahl+= elemt.innerText;
+		display_debug();
+
+	}
+
+	function add_rechner(elemt){
+		display(elemt.innerText);
+
+		zahlen.push(parseInt(zahl));
+		zahl ="";
+		zeichen.push(elemt.innerText);
+		display_debug();
+	}
+
+	function berechnen(){
+		zahlen.push(parseInt(zahl));
+		zahl ="";
+		display_debug();
+		let ergebnis = "error";
+
+		ergebnis = step1(zeichen[0],zahlen[0],zahlen[1]);
+		
+			if(zeichen.length > 1){
+				for(var i = 0;i < zeichen.length;i++){
+					zahlen[i+1] = step1(zeichen[i],zahlen[i],zahlen[i+1]);
+					display_debug();
+					if(i == zeichen.length-1){
+						ergebnis = zahlen[i+1];
+					}
+				}
+			}else{
+				ergebnis = step1(zeichen[0],zahlen[0],zahlen[1]);
+			}
+		
+
+
+		document.getElementById("ergebnis").innerText = " = "+ergebnis;
+	}
+
+	function step1(zeichen,zahl1,zahl2) {
+		if(zeichen == "+"){
+			return zahl1+zahl2
+		}
+		if(zeichen == "-"){
+			return zahl1-zahl2
+		}
+		if(zeichen == "/"){
+			return zahl1/zahl2
+		}
+		if(zeichen == "*"){
+			return zahl1*zahl2
+		}
+	}
+
+	function ac(){
+		zahlen = [];
+		zeichen = [];
+		zahl ="";
+		document.getElementById("rechnung").innerText = "";
+		document.getElementById("ergebnis").innerText = "";
+		display_debug()
+	}
+</script>
+</html>
