@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Dq Map editor</title>
+</head>
+<body>
+	<center>
+		<table>
+			<tr>
+				<td></td>
+				<td>
+					<span>Map size</span><br>
+					<input type="number" id="size_x_2" value="4"><br>
+					<input type="number" id="size_y_2" value="4"><br>
+					<span>Modul size</span><br>
+					<input type="number" id="size_x" value="14"><br>
+					<input type="number" id="size_y" value="14"><br>
+					<span class = "button" onclick="resize()">Change size</span>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<canvas id  = "map" width="512" height="512"  onclick ="map_click(this,event)"></canvas>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<label for="feld">Zu zeichnendes feld:</label>
+					<input list="felder" id="feld" name="feld" onfocus ="reset(this)" />
+					<datalist id="felder">
+					  <option value="none.png">
+					  <option value="wasser.png">
+					  <option value="berg.png">
+					  <option value="wiese.png">
+					  <option value="sand.png">
+					</datalist><br><br>
+					<span onclick="generate_string()" class = "button">Generate String</span><br><br>
+					<textarea id = "output"  onfocus="this.select()" ></textarea>
+				</td>
+				<td></td>
+			</tr>
+			
+			
+		</table>
+	</center>
+</body>
+<script>
+	var map = create_map_array(4,4,14,32);
+
+	function generate_string(){
+		document.getElementById("output").innerText = JSON.stringify(map);
+	}
+
+	function reset(elemt){
+		elemt.value = "";
+	}
+
+	function resize(){
+		 map = create_grid_array(document.getElementById("size_x").value,document.getElementById("size_y").value,32);
+		 draw_grid();
+	}
+
+	//donwloaded map
+	function test(){
+		 var link = document.createElement('a');
+		  link.download = 'filename.png';
+		  link.href = document.getElementById('map').toDataURL()
+		  link.click();
+	}
+
+	function map_click(canvas_el, event) { 
+		//sconsole.log(event);
+
+		var canvas = canvas_el;
+		var ctx = canvas.getContext('2d');
+		let rect = canvas.getBoundingClientRect(); 
+		var x = event.clientX - rect.left; 
+		var y = event.clientY - rect.top; 
+		
+		for(var i = 0; i < map.length;i++){
+			for(var  j= 0; j < map[i].length; j++){
+				if(x >= map[i][j].x && x <= map[i][j].x+map[i][j].size && y >= map[i][j].y && y <= map[i][j].y+map[i][j].size ){
+					//mit shift ist löschen ansosntsd das uzeoichnen was er da hat
+					if(event.shiftKey == false){
+						map[i][j].texture = document.getElementById("feld").value;
+						if(map[i][j].texture ==""){
+							map[i][j].texture = "none.png";
+						}
+						
+						if(map[i][j].texture != "none.png"){
+							let img = new Image();
+							img.src = "textures/"+map[i][j].texture;
+							ctx.drawImage(img,map[i][j].x,map[i][j].y,map[i][j].size,map[i][j].size);
+						}
+					}else{
+						map[i][j].texture = "none.png";
+						let img = new Image();
+						img.src = "textures/"+map[i][j].texture;
+						ctx.drawImage(img,map[i][j].x,map[i][j].y,map[i][j].size,map[i][j].size);	
+					}	
+				}
+			}
+		}
+		//draw_grid();	
+		
+	}
+
+
+	function create_map_array(modul_x,modul_y,modul_size,img_size){
+		let output2  =[],row2 = [];
+		for(var i = 0; i < modul_x;i++){
+			row2 = [];
+			for(var j = 0; j < modul_y; j++){
+				row2.push(create_modul_array(modul_size,img_size));
+			}
+			output2.push(row2);
+		}
+		return output2;
+	}
+
+	function create_modul_array(modul_size,img_size){
+		let output  =[],row = [];
+		for(var k = 0; k < modul_size;k++){
+			row = [];
+			for(var l = 0; l < modul_size; l++){
+				row.push(create_cell(k,l,img_size));
+			}
+			output.push(row);
+		}
+		return output;
+	}
+
+	function create_cell(i,j,size){
+		return {
+			"x":i*size,
+			"y":j*size,
+			"size":size,
+			"texture":"none.png"
+		}
+	}
+
+	function draw_grid(){
+		let canvas = document.getElementById("map");
+
+		canvas.width = map.length*map[0][0].size;
+		canvas.height = map[0].length*map[0][0].size;
+		let ctx = canvas.getContext("2d");
+
+		for(var i = 0; i < map.length;i++){
+			for(var j = 0; j < map[i].length; j++){
+				stroke_rect(ctx,i,j,map[i][j].size);
+				
+				let img = new Image();
+				img.src = "textures/"+map[i][j].texture;
+				ctx.drawImage(img,map[i][j].x,map[i][j].y,map[i][j].size,map[i][j].size);
+				
+			}
+		}
+	}
+
+	function stroke_rect(ctx,i,j,size){
+		ctx.moveTo(i*size,j*size);
+		ctx.lineTo(i*size+size,j*size);
+		ctx.lineTo(i*size+size,j*size+size);
+		ctx.lineTo(i*size,j*size+size);
+		ctx.lineTo(i*size,j*size);
+		ctx.stroke();
+	}
+	draw_grid();
+	draw_grid();
+</script>
+</html>

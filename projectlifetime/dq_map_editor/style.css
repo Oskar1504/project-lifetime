@@ -1,0 +1,30 @@
+.button{
+
+	border: solid 2px black;
+}
+input{
+	margin: 5px;
+	width: 3em;
+}
+
+table{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	vertical-align: center;
+
+}
+.arrow{
+	font-size: 50px;
+}
+.ausnahme{
+	width: 10em;
+}
+
+span{
+	font-size: 20px;
+}
+.left{
+	text-align: left;
+	
+}

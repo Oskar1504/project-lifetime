@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src= "js/main.js"></script>
+	<title>Dq Map editor</title>
+</head>
+<body onkeydown="key_press(event)">
+	<center>
+		<table>
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<td></td>
+							<td>
+								<span>Map size</span><br>
+								<input type="number" id="size_x" value="4">
+								<input type="number" id="size_y" value="4"><br>
+								<span>Modul size</span><br>
+								<input type="number" id="size_modul" value="14"><br><br>
+								<span class = "button" onclick="resize()">Change size</span>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><span id = "debug_modul"></span></td>
+							<td><span class = "arrow" onclick="arrow('up')">&#8679;</span></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><span class = "arrow" onclick="arrow('left')">&#8678;</span></td>
+							<td>
+								<canvas id  = "map" width="512" height="512"  onclick ="map_click(this,event)"></canvas>
+							</td>
+							<td><span class = "arrow" onclick="arrow('right')">&#8680;</span></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><span class = "arrow" onclick="arrow('down')">&#8681;</span></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<span>Feldauswahl</span><br>
+								<input list="felder" id="feld" name="feld" onfocus ="reset(this)" class = "ausnahme"/>
+								<datalist id="felder"></datalist><br><br>
+								<span>Hotkeys:</span><br>
+								<span>1:wiese  2:sand  3:wasser  4:kies  5:berg</span><br>
+								<span>shift+click feld loeschen</span><br>
+								<span>Pfeiltasten um zwischen Modulen zu switchen</span><br><br>
+								<span onclick="generate_string()" class = "button">Generate String</span><br><br>
+								<textarea id = "output"  onfocus="this.select()" ></textarea>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<span onclick="load_string()" class = "button">Load String</span><br><br>
+								<textarea id = "load_input"  ></textarea>
+							</td>
+							<td></td>
+						</tr>
+						
+						
+					</table>
+				</td>
+				<td>
+					<div id = "images" class = "left"></div>
+				</td>
+			</tr>
+	</center>
+</body>
+<script>
+
+	draw_grid(factor_x,factor_y);
+	show_images();
+
+</script>
+</html>
